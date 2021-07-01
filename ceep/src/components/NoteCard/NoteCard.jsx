@@ -7,7 +7,7 @@ class NoteCard extends Component {
       <section className="note-card">
         <header className="note-card_header">
           <h3 className="note-card_title">Title</h3>
-        </header> 
+        </header>
         <p className="note-card_text">Your Note</p>
       </section>
     );

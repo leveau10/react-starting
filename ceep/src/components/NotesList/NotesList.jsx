@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NoteCard from "../NoteCard/NoteCard.jsx";
+import NoteCard from "../NoteCard";
 import "./style.css";
 
 /*This component show a list of notes;
