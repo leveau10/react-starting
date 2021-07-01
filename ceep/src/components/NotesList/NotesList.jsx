@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import NoteCard from "./NoteCard";
+import NoteCard from "../NoteCard/NoteCard.jsx";
+import "./style.css";
 
 /*This component show a list of notes;
 1- Always import React;
@@ -10,16 +11,14 @@ import NoteCard from "./NoteCard";
 class NotesList extends Component {
   render() {
     return (
-      <ul>
-        <li>
-          <NoteCard />
-        </li>
-        <li>
-          <NoteCard />
-        </li>
-        <li>
-          <NoteCard />
-        </li>
+      <ul className="notes-list">
+        {Array.of("Job", "Job", "Studies").map((category, index) => {
+          return (
+            <li className="notes-list_item" key={index}>
+              <NoteCard />
+            </li>
+          );
+        })}
       </ul>
     );
   }

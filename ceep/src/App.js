@@ -1,16 +1,17 @@
-import React from "react";
-import NotesList from "./components/NotesList.jsx";
-import RegisterForm from "./components/RegisterForm.jsx";
+import React, { Component } from "react";
+import NotesList from "./components/NotesList/NotesList.jsx";
+import RegisterForm from "./components/RegisterForm/RegisterForm.jsx";
+import "./assets/App.css"
+import "./assets/reset.css"
 
-function App() {
-  return (
-    <section>
-      <RegisterForm />
-      <NotesList />
-    </section>
-  );
+class App extends Component{
+  render(){
+    return(
+      <section className="content">
+        <RegisterForm />
+        <NotesList />
+      </section>
+    ); 
+  } 
 }
-
-//react -> lib
-//React -> ecossystem
 export default App;
