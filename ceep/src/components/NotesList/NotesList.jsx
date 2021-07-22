@@ -13,7 +13,7 @@ class NotesList extends Component {
   render() {
     return (
       <ul className="notes-list">
-        {this.props.notes.map((note, index) => {
+        {this.props.notes.map((note, index, category) => {
           return (
             <li className="notes-list_item" key={index}>
 
@@ -21,8 +21,9 @@ class NotesList extends Component {
               index={index}
               deleteNote={this.props.deleteNote}
               title={note.title} 
-              text={note.text}/>
-
+              text={note.text}
+              category={note.category}/>
+              
             </li>
           );
         })}
