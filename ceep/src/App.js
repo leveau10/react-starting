@@ -13,9 +13,7 @@ class App extends Component{
     super();
 
     this.category = new Category();
-    this.notes = new NotesArray();
-
-   
+    this.notes = new NotesArray();   
   }
 
 
@@ -23,15 +21,15 @@ class App extends Component{
     return(
       <section className="content">
         <RegisterForm 
-        category={this.category.category}
-        createNote={this.notes.createNote }/> 
+        category={this.category}
+        createNote={this.notes.createNote.bind(this.notes) }/> 
         <main className="main-content">
           <CategoryList 
-            createCategory={this.category.createCategory}
-            category={this.category.category}/>
+            createCategory={this.category.createCategory.bind(this.category)}
+            category={this.category}/>
           <NotesList 
-            deleteNote={this.notes.deleNote}
-            notes={this.notes.notes }/> 
+            deleteNote={this.notes.deleNote.bind(this.notes)}
+            notes={this.notes }/> 
         </main>
 
       </section>

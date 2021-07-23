@@ -3,6 +3,25 @@ import React, { Component } from "react";
 import "./style.css";
 
 class CategoryList extends Component {
+
+    constructor(){
+      super();
+      this.state = {category:[]}
+      this._newCategory = this._newCategory.bind(this)
+    }
+
+  componentDidMount(){
+    this.props.category.subscribe(this._newCategory);
+  }
+
+  componentWillUnmount(){
+    this.props.category.unsubscribe(this._newCategory);
+  }
+
+  _newCategory(category){
+    this.setState({...this.state, category})
+  }
+
   _handlerEventInput(event) {
     if (event.key === "Enter") {
       event.stopPropagation();
@@ -15,7 +34,7 @@ class CategoryList extends Component {
     return (
       <section className="category-list">
         <ul className="category-list_list">
-          {this.props.category.map((category, index) => {
+          {this.state.category.map((category, index) => {
             return (
               <li className="category-list_item" key={index}>
                 {category}

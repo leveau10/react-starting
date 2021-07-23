@@ -1,19 +1,28 @@
 export default class Category {
     constructor(){
         this.category = [];
-        this._registered = [];
+        this._subscribed = [];
 
     }
 
-    register(func){
-        this._registered.push(func);
+    subscribe(func){
+        this._subscribed.push(func);
+    }
+
+    unsubscribe(func){
+        console.log(this._subscribed);
+        this._subscribed = this._subscribed.filter(f => f !== func)
+        console.log(this._subscribed);
     }
 
     notify(){
-        this._registered.forEach(func => func(this.category));
+        this._subscribed.forEach(func => {
+            func(this.category);
+        } );
     }
 
     createCategory(newCategory){
-        this.category.push(newCategory)
+        this.category.push(newCategory);
+        this.notify();
     }
 }

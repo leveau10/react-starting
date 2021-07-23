@@ -8,6 +8,23 @@ class RegisterForm extends Component {
     this.title = "";
     this.texto = "";
     this.category="Sem categoria"
+    this.state = {category:[]}
+    this._newCategory = this._newCategory.bind(this)
+  }
+
+  componentDidMount(){
+    
+    this.props.category.subscribe(this._newCategory);
+    
+  }
+
+  componentWillUnmount(){
+    this.props.category.unsubscribe(this._newCategory);
+    
+  }
+
+  _newCategory(category){
+    this.setState({...this.state, category});
   }
 
   _handleChangeCategory(event){
@@ -43,8 +60,8 @@ class RegisterForm extends Component {
 
           <option>Sem categoria</option>
 
-          {this.props.category.map((category) => {
-            return <option>{category}</option>;
+          {this.state.category.map((category, index) => {
+            return <option key={index}>{category}</option>;
           })}
         </select>
         <input

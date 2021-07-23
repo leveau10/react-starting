@@ -2,24 +2,32 @@
 export default class NotesArray{
     constructor(){
         this.notes = [];
-        this._registered = [];
+        this._subscribed = [];
     }
 
     createNote(title, text, category){
         const newNote = new Note(title, text, category);
         this.notes.push(newNote);
+        this.notify();
     }
 
     deleNote(index){
         this.notes.splice(index, 1);
+        this.notify();
     }
 
-    register(func){
-        this._registered.push(func);
+    subscribe(func){
+        this._subscribed.push(func);
     }
 
+    unsubscribe(func){
+        this._subscribed = this._subscribed.filter(f => f !== func)
+    }
+    
     notify(){
-        this._registered.forEach(func => func(this.category));
+        this._subscribed.forEach(func => {
+            func(this.notes)
+        });
     }
 };
 
